@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .square{
+            display:flex;
+            width:704px;
+            flex-wrap: wrap;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="square"></div>
+  </body>
+  <script>
+    square = document.querySelector(".square");
+    let boxes = [];
+    for(let i = 0 ;i<256;i++){
+        box = document.createElement("div");
+        box.id=`box${i}`;
+        box.setAttribute('style','width:40px;height:40px;border:2px solid black;')
+        box.addEventListener('mouseover',colorThis);
+        box.addEventListener('mouseout',removeColor);
+        boxes.push(box);
+    }
+    boxes.forEach((box)=>{
+        square.appendChild(box);
+        // console.log(box);
+    });
+    function colorThis(e){
+        e.target.style.backgroundColor="black";
+        // console.log(e.target);
+    }
+    function removeColor(e){
+        e.target.style.backgroundColor="white";
+    }
+  </script>
+</html>
