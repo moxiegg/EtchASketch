@@ -11,18 +11,32 @@
             width:704px;
             flex-wrap: wrap;
         }
+        .projectName{
+            font-family: 'Courier New', Courier, monospace;
+            font-size:40px;
+            color:brown
+        }
     </style>
   </head>
   <body>
-    <div class="square"></div>
+    <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;gap:1rem;">
+        <div class="projectName">Etch-A-Sketch</div>
+        <div class="square"></div>
+    </div>
+    
   </body>
   <script>
+    dimension = prompt("Enter Dimension:");
+    ht = 704/dimension;
+    ht-=4;
+    wd=ht;
+    console.log(ht);
     square = document.querySelector(".square");
     let boxes = [];
-    for(let i = 0 ;i<256;i++){
+    for(let i = 0 ;i<(dimension*dimension);i++){
         box = document.createElement("div");
         box.id=`box${i}`;
-        box.setAttribute('style','width:40px;height:40px;border:2px solid black;')
+        box.setAttribute('style',`width:${wd}px;height:${ht}px;border:2px solid black;`)
         box.addEventListener('mouseover',colorThis);
         box.addEventListener('mouseout',removeColor);
         boxes.push(box);
